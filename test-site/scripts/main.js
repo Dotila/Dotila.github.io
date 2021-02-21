@@ -306,7 +306,7 @@ const data = [
 		test: [
 			{
 				sentence : "彼女は日本人じゃありません",
-				translation : "彼女は日本人じゃありません"
+				translation : "She isn't Japanese"
 			},
 			{
 				sentence : "私達はアメリカ人じゃありません",
