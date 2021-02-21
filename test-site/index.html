@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My test page</title>
+    <link href="styles/style.css" rel="stylesheet">
+    <script src="scripts/main.js" defer></script>
+    <link rel="shortcut icon" href="images/a.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+  <body>
+    <div id="menu"></div>
+
+    <div id="lesson">
+
+      <header>
+        <h2 id="lessonName"></h2>
+        <div class="backToMenu" onclick="backToMenu()">Menu</div>
+        <div class="test" onclick="showTest()">Test</div>
+      </header>
+      
+      <main>
+        <h3>Vocabulary</h3>
+        <div id="vocabulary"></div>
+        <h3>Grammer</h3>
+        <div id="grammer"></div>
+        <h3>Expressions</h3>
+        <div id="expressions"></div>
+      </main>
+         
+    </div>
+
+    <div id="test">
+      
+      <header>
+        <div class="backToMenu" onclick="backToMenu()">Menu</div>
+        <div class="lesson" onclick="backToLesson()">Lesson</div>
+      </header>
+
+      <main>
+        <div class="box">
+          <p id="question"><b>Translate the following sentence:</b></p>
+          <p id="testSentence"></p>
+         <p id="testName"></p>
+        </div>
+        <textarea id="testarea" placeholder="type here" autofocus></textarea>
+        <div id="answer" class="box"></div>
+        <div id="check" onclick="checkAnswer()" > Check </div>
+        <div id="next" onclick="nextQuestion()"> Next </div>
+
+      </main>
+
+    </div>
+
+  </body>
+</html>
+<!--
+      <div style="background-color: yellow">
+        <header>
+          <h2>Basic 1</h2>
+          <div class="backToMenu" onclick="backToMenu()">Menu</div>
+          <div class="test">Test</div>
+        </header>
+        <main>
+          <h3>Vocabulary</h3>
+          <div class="box" onclick="showExamples(this)"> 
+            <div class="word">こんにちは &nbsp;&nbsp; <div class="meaning">hello</div></div> 
+            <div class="examples">
+              <hr>
+              <p class="sentence">こんにちは、トム。</p>
+              <p class="translation">Hello, Tom.</p>
+              <p class="sentence">こんにちは、スーザン。お元気ですか。</p>
+              <p class="translation">Hi, Susan. How are you?</p>
+            </div>  
+          </div>
+          <div class="box" onclick="showExamples(this)"> 
+            <div>父／お父さん &nbsp;&nbsp; <div class="meaning">father</div></div> 
+            <div class="examples">
+              <hr>
+              <p class="sentence">こんにちは、お父さん。</p>
+              <p class="translation">Hello, dad.</p>
+              <p class="sentence">私は父です。</p>
+              <p class="translation">I am a dad.</p>
+              <p class="sentence"></p>
+              <p class="translation"></p>
+            </div>  
+          </div>
+        </main>
+      </div>
+-->

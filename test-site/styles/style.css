@@ -1,0 +1,133 @@
+body {
+	padding: 3px;
+	max-width: 600px;
+	margin: 0px auto;
+	padding: 0;
+}
+::selection {
+  background: #fff;
+}
+hr {
+	display: block;
+	height: 0.1px;
+	border-width: 0;
+	color: #b3e6ff;
+	background-color: #b3e6ff;
+	box-shadow: 0.3px 0.3px 1px #b3e6ff;
+}
+header {
+	position: sticky;
+	top: 0px;
+	background-color: white;
+	z-index: 1;
+	padding-top: 15px;
+}
+#menu {
+	margin: 18px 6px;
+    display: grid;
+}
+#menu > div {
+    padding: 6px;
+    margin: 6px;
+    text-align: center;
+    box-shadow: 0.3px 0.3px 2px #bbb;
+    border-radius: 12px;
+}
+#menu > div:hover, .box:hover {
+	box-shadow: 0.3px 0.3px 6px skyblue !important;
+}
+#lesson, #test, #answer{
+	display: none;
+}
+.backToMenu, .test, .lesson {
+	display: inline-block;
+	margin: 9px 12px;
+	padding: 6px;
+	font-size: 120%;
+	color: skyblue;
+}
+.backToMenu:hover, .test:hover, .lesson:hover {
+	text-shadow: 0 0 2px;
+}
+h2 {
+	display: inline-block;
+	margin: 9px 18px;
+}
+main {
+	margin: 6px 9px;
+	padding: 3px 9px;
+}
+h3 {
+	margin: 18px 0px;
+}
+.box {
+	padding: 9px;
+	margin: 12px 0px;
+	border-radius: 12px;
+	box-shadow: 0.3px 0.3px 2px #bbb;
+	position: relative;
+}
+.meaning {
+	display: inline-block;
+	color: #ddd;
+	font-size: 90%;
+	font-weight: 100;
+}
+.examples {
+	display: none;
+}
+.sentence {
+	margin-bottom: 6px;
+	font-size: 80%
+}
+.translation {
+	margin: 0px;
+	color: #bbb;
+	font-size: 80%
+}
+#testarea {
+	width: 100%;
+	height: 100px;
+    padding: 20px 20px;
+    margin-top: 18px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background-color: #f8f8f8;
+    font-size: 18px;
+    resize: none;
+}
+#question, #testSentence {
+	margin: 9px 9px;
+}
+#testName {
+	position: absolute;
+  	right: 18px;
+  	bottom: 9px;
+  	margin: 0px;
+  	color: grey;
+}
+#check, #next {
+	margin: 21px auto;
+	padding: 6px;
+	width: 30%;
+	border-radius: 12px;
+	box-shadow: 0.3px 0.3px 2px #bbb;
+	text-align: center;
+	background-color: #99e6ff;
+}
+#check:hover, #next:hover {
+	background-color: #66d9ff;
+}
+#check {
+	float: left;
+}
+#next {
+	float: right;
+}
+#answer {
+	text-align: center;
+}
+#answer > p {
+	margin-top: 6px;
+}
