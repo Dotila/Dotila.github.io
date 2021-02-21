@@ -505,6 +505,186 @@ const data = [
 					},
 		]
 	},
+	{
+		name: "Animals",
+		vocabulary: [
+
+		],
+		grammer: [
+
+		],
+		expressions: [
+
+		],
+		test: [
+
+		]
+	},
+	{
+		name: "Dish",
+		vocabulary: [
+
+		],
+		grammer: [
+
+		],
+		expressions: [
+
+		],
+		test: [
+
+		]
+	},
+	{
+		name: "Complemen",
+		vocabulary: [
+
+		],
+		grammer: [
+
+		],
+		expressions: [
+
+		],
+		test: [
+
+		]
+	},
+	{
+		name: "Ask & Answer",
+		vocabulary: [
+
+		],
+		grammer: [
+
+		],
+		expressions: [
+
+		],
+		test: [
+
+		]
+	},
+	{
+		name: "Place",
+		vocabulary: [
+
+		],
+		grammer: [
+
+		],
+		expressions: [
+
+		],
+		test: [
+
+		]
+	},
+	{
+		name: "Numbers",
+		vocabulary: [
+
+		],
+		grammer: [
+
+		],
+		expressions: [
+
+		],
+		test: [
+
+		]
+	},
+	{
+		name: "Time",
+		vocabulary: [
+
+		],
+		grammer: [
+
+		],
+		expressions: [
+
+		],
+		test: [
+
+		]
+	},
+	{
+		name: "Time 2",
+		vocabulary: [
+
+		],
+		grammer: [
+
+		],
+		expressions: [
+
+		],
+		test: [
+
+		]
+	},
+	{
+		name: "Directions",
+		vocabulary: [
+
+		],
+		grammer: [
+
+		],
+		expressions: [
+
+		],
+		test: [
+
+		]
+	},
+	{
+		name: "Traffic",
+		vocabulary: [
+
+		],
+		grammer: [
+
+		],
+		expressions: [
+
+		],
+		test: [
+
+		]
+	},
+	{
+		name: "Week & Month",
+		vocabulary: [
+
+		],
+		grammer: [
+
+		],
+		expressions: [
+
+		],
+		test: [
+
+		]
+	},
+	{
+		name: "Daily life 1",
+		vocabulary: [
+
+		],
+		grammer: [
+
+		],
+		expressions: [
+
+		],
+		test: [
+
+		]
+	},
 ]
 
 let currentLessonId = 0;
@@ -520,7 +700,6 @@ let testSentence = document.getElementById("testSentence");
 let testarea = document.getElementById("testarea");
 let check = document.getElementById("check");
 let answer = document.getElementById("answer");
-//let checkSate = false;
 
 
 for ( let i = 0; i < data.length; i++ ) {
@@ -537,6 +716,10 @@ function playSound( src ) {
 }
 
 function showLesson(lessonId) {
+	if ( lessonId > 2 ) {
+		alert("目前只有前三节课有内容");
+		return;
+	}
 	lessonName.innerHTML = data[lessonId].name;
 	currentLessonId = lessonId;
 	while ( vocabulary.hasChildNodes() ) {  
