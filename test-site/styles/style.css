@@ -40,6 +40,7 @@ header {
 	display: none;
 }
 .backToMenu, .test, .lesson {
+	cursor: pointer;
 	display: inline-block;
 	margin: 9px 12px;
 	padding: 6px;
@@ -115,6 +116,7 @@ h3 {
 	box-shadow: 0.3px 0.3px 2px #bbb;
 	text-align: center;
 	background-color: #99e6ff;
+	cursor: pointer;
 }
 #check:hover, #next:hover {
 	background-color: #66d9ff;

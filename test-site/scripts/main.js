@@ -398,7 +398,7 @@ const data = [
 				examples : [
 					{
 						sentence : "犬がいます",
-						translation : "犬がいます"
+						translation : "There is a dog"
 					},
 				]
 			},
@@ -468,7 +468,7 @@ const data = [
 		],
 		test: [
 					{
-						sentence : "私達はお兄さんがいません",
+						sentence : "私達はお兄さんがいます",
 						translation : "We have a older brother"
 					},
 					{
@@ -489,11 +489,11 @@ const data = [
 					},
 					{
 						sentence : "私は猫がいます",
-						translation : "私は猫がいます"
+						translation : "I have a cat"
 					},
 					{
 						sentence : "私は鉛筆があります",
-						translation : "私は鉛筆があります"
+						translation : "I have a pencil"
 					},
 					{
 						sentence : "私は猫がいません",
