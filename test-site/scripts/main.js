@@ -818,6 +818,7 @@ function resetTest() {
 	answer.style.display = "none";
 	check.style.backgroundColor = "#99e6ff";
 	check.innerHTML = "Check";
+	testarea.value = null;
 }
 
 function backToMenu() {
@@ -879,6 +880,7 @@ function nextQuestion() {
 	answer.style.display = "none";
 	check.style.backgroundColor = "#99e6ff";
 	check.innerHTML = "Check";
+	testarea.value = null;
 	if ( currentQuestionId >= data[currentLessonId].test.length-1 ) {
 		currentQuestionId = 0;
 	} else {
