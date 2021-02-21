@@ -254,7 +254,7 @@ const data = [
 			},
 			{
 				word : "達",
-				meaning : "私達",
+				meaning : "plural pronouns",
 				examples : [
 					{
 						sentence : "私達",
@@ -264,16 +264,6 @@ const data = [
 						sentence : "貴方達",
 						translation : "you guys"
 					}
-				]
-			},
-			{
-				word : "も",
-				meaning : "も",
-				examples : [
-					{
-						sentence : "私達も貴方が好きです",
-						translation : "We like you too"
-					},
 				]
 			},
 			{
@@ -288,6 +278,16 @@ const data = [
 						sentence : "they ( boys )",
 						translation : "they ( girls )"
 					}
+				]
+			},
+			{
+				word : "も",
+				meaning : "too",
+				examples : [
+					{
+						sentence : "私達も貴方が好きです",
+						translation : "We like you too"
+					},
 				]
 			},
 		],
