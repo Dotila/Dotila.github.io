@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dotila's Github Pages</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="scripts/script.js"></script>
+  </head>
+  <body>
+    <h1 id="welcome">Welcome to Dotila's Github Pages!</h1>
+    
+
+    <style type="text/css">
+
+      h1 {
+        padding: 30vh 0;
+        text-align: center;
+        font: 90px cursive;
+      }
+      
+      h1::selection {
+        color: black;
+      }
+
+    </style>
+
+    <script>
+
+      let clickCount = 0;
+      let passcode = "......";
+      let homePageURL = "home/index.html";
+      let input;
+
+      document.getElementById("welcome").onclick = function click() {
+        clickCount++;
+        if (clickCount > 5) {
+          input = prompt("Passcode is required");
+          if (input == passcode) {
+            location.href = homePageURL;
+          } else {
+            clickCount = 0;
+          }
+        }
+      }
+      
+    </script>
+  </body>
+</html>

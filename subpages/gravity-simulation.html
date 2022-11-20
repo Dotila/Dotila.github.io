@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>Gravity</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="stylesheet.css">
+        <style type="text/css">
+            .sliderA,.sliderB,.sliderC{
+                -webkit-appearance: none;
+                appearance: none;
+                width: 100%;
+                height: 3px;
+                background: #fff;
+                outline: none;
+                opacity: 0.5;
+            }
+            .sliderA:hover,.sliderB:hover,.sliderC:hover{
+                opacity: 1;
+            }
+            #slidecontainer {
+                width: 10%;
+                position:fixed; 
+                top: 1%;
+                left: 1%;
+            }
+            body {
+                color: gray;
+            }
+            p {
+                opacity: 0.5;
+                margin: 0;
+            }
+        </style>
+    </head>    
+    <body>
+        <div id="slidecontainer">
+            <p>小球数量</p>
+            <input type="range" min="0" max="200" value="50" step="1" id="slider1">
+            <p>引力系数</p>
+            <input type="range" min="0" max="0.3" value="0" step="0.01" id="slider2">
+            <p>黑球质量</p>
+            <input type="range" min="0" max="6000" value="3000" step="1" id="slider3">
+            <p> 可用鼠标移动黑球哦！</p>
+        </div>
+        <canvas id="canvas">your browser dosen't support canvas</canvas>
+        <script>
+            var slider2 = document.getElementById('slider2');   console.log(slider2.value);
+            window.requestAnimFrame = (function(){ return  window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function( callback ){ window.setTimeout(callback, 1000 / 60);  }; })();
+            var canvas = document.getElementById('canvas');
+            var c = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            var born = 0;
+            var i, j;
+            var n = slider1.max;//canvas.width * canvas.height / 6000;
+            var k = slider2.value;
+            var stars = [];
+            var mu = canvas.width / 50;
+            var c1 = [];
+            var mouse = { x:0, y:0 };
+            var flag1 = 0;
+            var click = 0;
+            canvas.addEventListener("click", function(event) {
+                if ( event.x > 200 || event.y > 200 ) {
+                    if ( flag1 === 0 ) 
+                        flag1 = 1;
+                    else
+                        flag1 = 0;
+                }
+            })
+            function Star(x, y, xs, ys, r, m, color) {
+                this.x = x;
+                this.y = y;
+                this.xs = xs;
+                this.ys = ys;
+                this.r = r;
+                this.m = m;
+                this.color = color;
+                this.draw = function() {
+                    c.fillStyle = this.color;
+                    c.beginPath();
+                    c.arc(this.x, this.y, this.r, 0, Math.PI*2, false);
+                    c.fill()
+                }  
+                this.update = function() {
+                    this.x += this.xs;  
+                    this.y += this.ys;
+                    if ( this.x > canvas.width+100 - this.r || this.x < this.r-100 ) {
+                        this.xs = -this.xs;
+                    } 
+                    if ( this.y > canvas.height+100 - this.r || this.y < this.r-100 ) {
+                        this.ys = -this.ys;
+                    }
+                }  
+            }
+            function create_n_stars(n) { //
+                for ( i = 0; i < n; i++ ) {
+                    var x = Math.random() * canvas.width;
+                    var y = Math.random() * canvas.height;
+                    var r = 3 + Math.random() * 15;//3 + Math.random() * 15;
+                    var m = Math.pow(r/2, 3);
+                    var xs = (Math.random() - 0.5) * 1.5;
+                    var ys = (Math.random() - 0.5) * 1.5;
+                    var color1 = 'rgb(' + (200-i) + ',' + (200-i) + ',' + (200-i) + ')';
+                    var color2 = 'rgb(' + i + ',' + i + ',' + i + ')';
+                    var color3 = 'rgb(' + (Math.random()*100+155) + ',' + (Math.random()*100+155) + ',' + (Math.random()*100+155) + ')';
+                    stars.push( new Star(x, y, xs, ys, r, m, color3) );
+                }
+            }  
+            function updateSpeed( s1, s2 ) {
+                var d = Math.sqrt( Math.pow(s1.x-s2.x, 2) + Math.pow(s1.y-s2.y, 2) );
+                if ( d > 20 ) {
+                    var f = k * s1.m * s2.m / d / d;
+                    var dx = s1.x - s2.x;
+                    var dy = s1.y - s2.y;  
+                    s1.xs -= ( dx / d * f ) / s1.m;
+                    s1.ys -= ( dy / d * f ) / s1.m;
+                    s2.xs += ( dx / d * f ) / s2.m;
+                    s2.ys += ( dy / d * f ) / s2.m;
+                }
+            }
+            function loop() {
+                window.requestAnimFrame(loop);
+                c.clearRect(0, 0, canvas.width, canvas.height);
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                for ( i = 0; i < n; i++ ) {
+                    stars[i].draw();
+                    stars[i].update();
+                    stars[0].xs = 0;
+                    stars[0].ys = 0;
+                }
+                for ( i = 0; i < n; i++ ) {
+                    for ( j = i + 1; j < n; j++ ) 
+                        updateSpeed( stars[i], stars[j] );
+                } 
+                n = slider1.value;
+                k = slider2.value;
+                stars[0].m = slider3.value;
+                c.fillStyle = "skyblue";
+                c.font = "30px youyuan";  
+                if ( click < 60 )
+                    click += 0.05;
+                //console.log(star);
+                if ( click < 10 ) {
+                    c.fontWidth = '300';
+                    c.strokeStyle = 'skyblue';
+                    c.lineWidth = 5;
+                    c.lineCap = 'round';
+                    c.fillText("调节这三个参数，会有好玩的事情发生！", 400, 400);    
+                    c.beginPath();
+                    c.moveTo(200, 200);
+                    c.lineTo(380, 360);
+                    c.moveTo(200, 200);
+                    c.lineTo(230, 205);
+                    c.moveTo(200, 200);
+                    c.lineTo(205, 230);
+                    c.stroke();
+                }
+            }   
+            window.addEventListener('click', function(event) {
+                if ( event.x > 200 || event.y > 200 ) {    
+                    stars[0].x = event.x;
+                    stars[0].y = event.y;
+                }
+            }) 
+            window.addEventListener('mousemove', function(event) {
+                if ( flag1 === 1 ) {
+                    stars[0].x = event.x;
+                    stars[0].y = event.y;
+                }
+                mouse.x = event.x;
+                mouse.y = event.y;
+            })  
+            create_n_stars(n); 
+            stars[0].color = 'rgb(100,100,100)';
+            stars[0].r = 20;
+            stars[0].m = slider3.value;
+            window.requestAnimFrame(loop);console.log(  stars[0].m  ) ;
+        </script>
+    </body>
+</html>
